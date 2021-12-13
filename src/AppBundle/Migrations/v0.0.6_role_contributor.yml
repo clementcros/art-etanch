@@ -1,0 +1,26 @@
+-
+    type: role
+    mode: update
+    match:
+        identifier: Contributor
+    policies:
+        -
+            module: content
+            function: create
+            limitations:
+                -
+                    identifier: Class
+                    values: [kitchen]
+                -
+                    identifier: ParentClass
+                    values: [list_kitchen]
+        -
+            module: content
+            function: create
+            limitations:
+                -
+                    identifier: Class
+                    values: [family_kitchen]
+                -
+                    identifier: ParentClass
+                    values: [list_family_kitchen]

@@ -1,0 +1,12 @@
+-
+    type: user_group
+    mode: create
+    parent_group_id: 4
+    name: Contributeur
+    roles:
+        - "Access Backend"
+        - "Contributor"
+    section: users
+    references:
+        -   identifier: contributor_content_id
+            attribute: user_group_id

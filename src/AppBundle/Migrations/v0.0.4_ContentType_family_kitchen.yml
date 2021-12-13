@@ -1,0 +1,67 @@
+-
+    type: content_type
+    mode: create
+    content_type_group: Content
+    identifier: family_kitchen
+    name:
+        eng-GB: "Type de cuisine"
+    name_pattern: <family_kitchen_title>
+    is_container: true
+    attributes:
+        -
+            type: ezstring
+            name:
+                eng-GB: "Titre"
+            identifier: family_kitchen_title
+            description:
+                eng-GB: "Titre du type cuisine ( cuisine en L ou en U ... )"
+            required: true
+            searchable: true
+            info-collector: false
+            disable-translation: false
+            category: default
+            position: 10
+
+        -
+            type: ezimage
+            name:
+                eng-GB: "Image tuile"
+            identifier: image_tile
+            description:
+                eng-GB: "Image utilisée pour illustrer le type de cuisine en tuile"
+            required: true
+            searchable: false
+            info-collector: false
+            disable-translation: false
+            category: media
+            position: 20
+
+        -
+            type: ezimage
+            name:
+                eng-GB: "Image landing page"
+            identifier: image
+            description:
+                eng-GB: "Image utilisée pour illustrer la page associé"
+            required: true
+            searchable: false
+            info-collector: false
+            disable-translation: false
+            category: media
+            position: 30
+            
+        -
+            type: ezobjectrelationlist
+            name:
+                eng-GB: "Cuisines associés"
+            identifier: kitchen_relation
+            description:
+                eng-GB: "Liste des cuisines associés a cette famille"
+            field-settings:
+                selectionContentTypes: ["kitchen"]
+            required: false
+            searchable: false
+            info-collector: false
+            disable-translation: false
+            category: default
+            position: 40

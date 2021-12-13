@@ -1,0 +1,23 @@
+-
+    type: content_type
+    mode: create
+    content_type_group: Content
+    identifier: list_family_kitchen
+    name:
+        eng-GB: "Liste des type de cuisine"
+    name_pattern: <list_family_kitchen_title>
+    is_container: true
+    attributes:
+        -
+            type: ezstring
+            name:
+                eng-GB: "Titre"
+            identifier: list_family_kitchen_title
+            description:
+                eng-GB: "Titre de la liste de famille de cuisine"
+            required: true
+            searchable: true
+            info-collector: false
+            disable-translation: false
+            category: default
+            position: 10

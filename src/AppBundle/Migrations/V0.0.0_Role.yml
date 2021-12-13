@@ -1,0 +1,54 @@
+-
+    type: role
+    mode: create
+    name: Access Backend
+    policies:
+        -
+            module: user
+            function: login
+            limitations:
+                -
+                    identifier: SiteAccess
+                    values: [admin]
+        -
+            module: user
+            function: password
+        -
+            module: user
+            function: preferences
+-
+    type: role
+    mode: create
+    name: Contributor
+    policies:
+        -
+            module: content
+            function: read
+        -
+            module: content
+            function: versionread
+        -
+            module: content
+            function: edit
+            limitations:
+                -
+                    identifier: Class
+                    values:
+                        - homepage
+        -
+            module: content
+            function: publish
+        -
+            module: content
+            function: versionremove
+            limitations:
+                -
+                    identifier: Class
+                    values:
+                        - homepage
+        -
+            module: content
+            function: restore
+        -
+            module: content
+            function: reverserelatedlist

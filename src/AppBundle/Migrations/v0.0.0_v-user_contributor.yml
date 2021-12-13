@@ -1,0 +1,9 @@
+-
+    type: user
+    mode: create
+    first_name: Contributeur
+    last_name: art-etanch
+    username: art-etanch
+    email: contributeur@art-etanch.fr
+    password: Azerty$123
+    groups: ["reference:contributor_content_id"]

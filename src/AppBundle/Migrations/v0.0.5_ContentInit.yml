@@ -1,0 +1,30 @@
+# Create list
+-
+    type: content
+    mode: create
+    content_type: list_family_kitchen
+    parent_location: 2
+    attributes:
+        list_family_kitchen_title: Liste des familles de cuisines
+    lang: eng-GB
+    sort_field: priority
+    sort_order: ASC
+    references:
+        -
+            identifier: list_family_kitchen_location
+            attribute: location_id
+
+-
+    type: content
+    mode: create
+    content_type: list_kitchen
+    parent_location: 2
+    attributes:
+        list_kitchen_title: Liste des cuisines
+    lang: eng-GB
+    sort_field: priority
+    sort_order: ASC
+    references:
+        -
+            identifier: list_kitchen_location
+            attribute: location_id
