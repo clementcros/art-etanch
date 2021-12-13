@@ -1,0 +1,54 @@
+#-
+#    # Delete an existing language
+#    type: language
+#    mode: delete
+#    match:
+#        language_code: eng-GB # int|int[]
+-
+    type: content_type
+    mode: create
+    content_type_group: Content
+    identifier: homepage
+    name:
+        eng-GB: "Accueil"
+    name_pattern: <title>
+    is_container: true
+    attributes:
+        -   type: ezstring
+            name:
+                eng-GB: "Titre"
+            identifier: title
+            description:
+                eng-GB: "Titre pour l'affichage en back-office"
+            required: true
+            searchable: false
+            info-collector: false
+            disable-translation: false
+            category: default
+            position: 10
+        -
+            type: ezimage
+            name:
+                eng-GB: "Logo page d'accueil"
+            identifier: logo_homepage
+            description:
+                eng-GB: "Logo utilisé pour la page d'accueil"
+            required: true
+            searchable: false
+            info-collector: false
+            disable-translation: false
+            category: default
+            position: 20
+        -
+            type: eztext
+            name:
+                eng-GB: "Accroche page d'accueil"
+            identifier: short_description_homepage
+            description:
+                eng-GB: "Accroche affichée la page d'accueil."
+            required: false
+            searchable: false
+            info-collector: false
+            disable-translation: false
+            category: default
+            position: 30

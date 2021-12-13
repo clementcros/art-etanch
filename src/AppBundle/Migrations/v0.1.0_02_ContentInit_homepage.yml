@@ -1,0 +1,10 @@
+-
+    type: content
+    mode: create
+    content_type: homepage
+    parent_location: 2
+    attributes:
+        title: Art-etanch
+        logo_homepage:
+            path: 'img.png'
+            alt_text: 'art-etanch'

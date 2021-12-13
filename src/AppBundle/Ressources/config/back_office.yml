@@ -1,0 +1,6 @@
+ezpublish:
+    system:
+        default:
+            content_type:
+                homepage:
+                    thumbnail: /bundles/ezplatformadminui/img/ez-icons.svg#home-page

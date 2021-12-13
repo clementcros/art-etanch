@@ -1,0 +1,19 @@
+
+services:
+    _defaults:
+        autoconfigure: true
+        autowire: true
+        public: true
+#
+#    AppBundle\Utils\SearchHelper:
+#        bind:
+#            $searchEngine: '%search_engine%'
+
+#    AppBundle\Controller\:
+#        resource: "../../Controller/*"
+#
+#    AppBundle\Twig\:
+#        resource: "../../Twig/*"
+#
+#
+
