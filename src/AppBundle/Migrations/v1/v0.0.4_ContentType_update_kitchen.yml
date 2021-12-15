@@ -1,0 +1,75 @@
+-
+    type: location
+    mode: load
+    match:
+        content_type_identifier: list_kitchen
+    references:
+        -   identifier: list_kitchen_forward_location_id
+            attribute: location_id
+
+-
+    type: content_type
+    mode: update
+    match:
+        identifier: kitchen
+    attributes:
+        -
+            type: ezimage
+            name:
+                eng-GB: "Image utilisé pour mettre en avant la cuisine"
+            identifier: image_tile
+            description:
+                eng-GB: "Image utilisé pour mettre en avant la cuisine"
+            required: true
+            searchable: false
+            info-collector: false
+            disable-translation: false
+            category: default
+            position: 20
+        -
+            type: ezimage
+            name:
+                eng-GB: "Image utilisé pour la page produit de la cuisine"
+            identifier: image
+            description:
+                eng-GB: "Image utilisé pour la landing page"
+            required: true
+            searchable: false
+            info-collector: false
+            disable-translation: false
+            category: default
+            position: 30
+        
+        -
+            type: ezrichtext
+            name:
+                eng-GB: "Contenu"
+            identifier: text_content
+            description:
+                eng-GB: "Contenu de la page dédier a la cuisine"
+            required: false
+            searchable: false
+            info-collector: false
+            disable-translation: false
+            category: default
+            position: 40
+        
+        -
+            type: ezobjectrelationlist
+            name:
+                eng-GB: "Champs de proposition alternative"
+            identifier: kitchen_relation
+            description:
+                eng-GB: "Cuisines mise en avant sur cette page produit"
+            required: false
+            searchable: false
+            info-collector: false
+            disable-translation: false
+            category: default
+            validator-configuration:
+                RelationListValueValidator:
+                    selectionLimit: 3
+            field-settings:
+                selectionDefaultLocation: "reference:list_kitchen_forward_location_id"
+                selectionContentTypes: [ "kitchen" ]
+            position: 50

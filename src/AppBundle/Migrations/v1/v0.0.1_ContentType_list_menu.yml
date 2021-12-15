@@ -1,0 +1,23 @@
+-
+    type: content_type
+    mode: create
+    content_type_group: Content
+    identifier: list_menu
+    name:
+        eng-GB: "Liste menu"
+    name_pattern: <title>
+    is_container: true
+    attributes:
+        -
+            type: ezstring
+            name:
+                eng-GB: "Titre"
+            identifier: title
+            description:
+                eng-GB: "Titre pour l'affichage en back-office"
+            required: true
+            searchable: false
+            info-collector: false
+            disable-translation: false
+            category: default
+            position: 10

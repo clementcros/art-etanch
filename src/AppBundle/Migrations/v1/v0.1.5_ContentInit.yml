@@ -1,0 +1,10 @@
+-
+    type: content
+    mode: create
+    content_type: list_menu
+    parent_location: 2
+    attributes:
+        title: Liste des menus
+    lang: eng-GB
+    sort_field: priority
+    sort_order: ASC

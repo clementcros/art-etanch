@@ -1,0 +1,60 @@
+-
+    type: location
+    mode: load
+    match:
+        content_type_identifier: list_kitchen
+    references:
+        -   identifier: list_kitchen_location_id
+            attribute: location_id
+-
+    type: content_type
+    mode: update
+    match:
+        identifier: homepage
+    attributes:
+        -
+            type: ezimage
+            name:
+                eng-GB: "Image de fond pour la page d'accueil"
+            identifier: image_background
+            description:
+                eng-GB: "Image utilisé en fond de la page d'accueil"
+            required: false
+            searchable: false
+            info-collector: false
+            disable-translation: false
+            category: default
+            position: 40
+        -
+            type: ezobjectrelationlist
+            name:
+                eng-GB: "Cuisines mise en avant"
+            identifier: kitchen_relation
+            description:
+                eng-GB: "Liste des cuisines mise en avant"
+            required: false
+            searchable: false
+            info-collector: false
+            disable-translation: false
+            category: default
+            validator-configuration:
+                RelationListValueValidator:
+                    selectionLimit: 3
+            field-settings:
+                selectionDefaultLocation: "reference:list_kitchen_location_id"
+                selectionContentTypes: [ "kitchen" ]
+            position: 50
+        
+        -
+            type: ezrichtext
+            name:
+                eng-GB: "Text libre sur la page d'accueil"
+            identifier: text_content
+            description:
+                eng-GB: "Contenu de l'article"
+            required: false
+            searchable: false
+            info-collector: false
+            disable-translation: false
+            category: default
+            position: 60

@@ -1,0 +1,19 @@
+{% macro link(content, inter_link_attr = 'internal_link' , exter_link_attr = 'external_link') %}
+{% apply spaceless %}
+    {% if content.fields[exter_link_attr] is defined
+        and not ez_is_field_empty(content, exter_link_attr)
+        and ez_field_value(content, exter_link_attr).link is defined %}
+        {% set url = ez_field_value(content, exter_link_attr).link %}
+    {% elseif content.fields[inter_link_attr] is defined
+        and not ez_is_field_empty(content, inter_link_attr)
+        and ez_field_value(content, inter_link_attr).destinationContentId|is_published() %}
+        {% set internal_link_content_id = ez_field_value(content, inter_link_attr).destinationContentId %}
+        {% set url =  path('ez_urlalias', {'contentId': internal_link_content_id}) %}
+    {% endif %}
+    {{ url|default('#') }}
+{% endapply %}
+{% endmacro %}
+
+{%- macro target(content, exter_link_attr = 'external_link') %}
+    {{-content.fields[exter_link_attr] is defined and not ez_is_field_empty(content, exter_link_attr) ? "_blank": "_self"-}}
+{% endmacro -%}

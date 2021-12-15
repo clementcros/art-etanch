@@ -1,71 +1,51 @@
 {% extends 'pagelayout.html.twig' %}
 
 {% block content %}
-    <div class="bgded overlay" style="background-image:url('images/demo/backgrounds/01.png');">
-        <div class="wrapper row0">
-            <div id="topbar" class="hoc clear">
-                <p class="fl_left nospace"><i class="fas fa-phone"></i> +00 (123) 456 7890</p>
-                <p class="fl_right nospace"><a class="btn" href="#">Get A Quote</a></p>
-            </div>
-        </div>
+    <div class="bgded overlay"
+         {% if not ez_is_field_empty(content, 'image_background') %}
+         style="background-image:url('{{ ez_field_value(content, 'image_background').uri }}');"
+         {% endif %}
+    >
         <div id="pageintro" class="hoc clear">
-            <!-- ################################################################################################ -->
             <article>
-                <p>Habitant morbi tristique</p>
-                <h3 class="heading">Senectus et netus</h3>
-                <p>Et malesuada fames ac turpis egestas duis rutrum eros ut sapien in hac habitasse platea dictumst aliquam venenatis leo et orci ut pretium odio eu nisi nulla at.</p>
-                <footer>
-                    <ul class="nospace inline pushright">
-                        <li><a class="btn" href="#">Egestas</a></li>
-                        <li><a class="btn inverse" href="#">Tristique</a></li>
-                    </ul>
-                </footer>
+                {% if not ez_is_field_empty(content, 'title') %}
+                    <h3 class="heading">{{ ez_field_value(content, 'title') }}</h3>
+                {% endif %}
+
+                {% if not ez_is_field_empty(content, 'description') %}
+                    {{ ez_render_field(content, 'description') }}
+                {% endif %}
             </article>
-            <!-- ################################################################################################ -->
         </div>
-        <!-- ################################################################################################ -->
     </div>
-    <!-- End Top Background Image Wrapper -->
-    <!-- ################################################################################################ -->
-    <!-- ################################################################################################ -->
-    <!-- ################################################################################################ -->
     <div class="wrapper row3">
         <main class="hoc container clear">
-            <!-- main body -->
-            <!-- ################################################################################################ -->
             <section id="services">
-                <h6 class="heading font-x3">Dui aliquam erat volutpat</h6>
-                <p class="btmspace-80 bold">Suspendisse porta ligula non elementum ultricies justo urna egestas metus ut ornare leo augue pharetra risus.</p>
-                <ul class="nospace group">
-                    <li class="one_quarter">
-                        <article><i class="fas fa-door-open fa-4x"></i>
-                            <h6 class="heading">Morbi tincidunt</h6>
-                            <p>Massa ac vestibulum rutrum orci augue iaculis nibh quis porta nunc nisi suscipit leo fusce accumsan volutpat dui donec molestie.</p>
-                            <footer><a class="btn" href="#">See Details</a></footer>
-                        </article>
-                    </li>
-                    <li class="one_quarter">
-                        <article><i class="fas fa-dove fa-4x"></i>
-                            <h6 class="heading">Arcu quis neque</h6>
-                            <p>Integer pretium erat rhoncus ipsum nam nunc ut aliquam tristique metus integer sagittis vestibulum suscipit justo et leo curabitur.</p>
-                            <footer><a class="btn" href="#">See Details</a></footer>
-                        </article>
-                    </li>
-                    <li class="one_quarter">
-                        <article><i class="fas fa-marker fa-4x"></i>
-                            <h6 class="heading">Risus accumsan</h6>
-                            <p>Ligula vitae magna vestibulum congue erat eu turpis nulla libero phasellus pharetra justo eu iaculis auctor erat sapien viverra.</p>
-                            <footer><a class="btn" href="#">See Details</a></footer>
-                        </article>
-                    </li>
-                    <li class="one_quarter">
-                        <article><i class="fas fa-ribbon fa-4x"></i>
-                            <h6 class="heading">Arcu eget iaculis</h6>
-                            <p>Dui augue vitae arcu in nec orci vel odio vulputate sagittis nullam augue tortor rhoncus sed dictum vitae viverra posuere lorem.</p>
-                            <footer><a class="btn" href="#">See Details</a></footer>
-                        </article>
-                    </li>
-                </ul>
+                {% if not ez_is_field_empty(content, 'title_relation') %}
+                    <h6 class="heading font-x3 center">{{ ez_field_value(content, 'title_relation') }}</h6>
+                {% endif %}
+
+                {% if not ez_is_field_empty(content, 'description_forward_kitchen') %}
+                    {{ ez_render_field(content, 'description_forward_kitchen') }}
+                {% endif %}
+
+                {% if kitchens is not null %}
+                    <ul class="nospace group">
+                        {% for kitchen in kitchens %}
+                            {{ dump(kitchen.contentInfo.mainLocationId) }}
+                            {{ dump(path(kitchen)) }}
+                            <li class="one_quarter">
+                                <article class="height-tile"
+                                    {% if not ez_is_field_empty(kitchen, 'image_tile') %}
+                                        style="background-image:url('{{ ez_field_value(kitchen, 'image_tile').uri }}');"
+                                    {% endif %}
+                                >
+                                    <h6 class="heading bg-white">{{ ez_field_value(kitchen, 'title') }}</h6>
+                                </article>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
             </section>
             <!-- ################################################################################################ -->
             <!-- / main body -->

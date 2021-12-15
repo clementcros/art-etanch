@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 {#{% set language = app.request.locale | slice(0, 2) %}#}
 {% set language = 'fr' %}
+{% set currentLocation = (location is defined and not location.isDraft) ? location : null %}
+{% set currentLocationId =  (currentLocation is defined and currentLocation is not null) ? currentLocation.id : null %}
 <html lang="{{ language }}">
 <head>
     <meta charset="utf-8">
@@ -17,7 +19,8 @@
 </head>
 
 <body class="{% if bodyClass is defined %} {{ bodyClass }}{% endif %}">
-<header class="header">
+<header id="header" class="hoc clear">
+    {{ render_esi(controller('AppBundle:Layout:header', { 'currentLocationId': currentLocationId })) }}
 </header>
 
 <div class="page-container">

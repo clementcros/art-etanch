@@ -68,7 +68,7 @@ File: Layout CSS
 #services article{display:block; padding:30px 15px; text-align:center;}
 #services article *{}
 #services article i{margin-bottom:30px;}
-#services article .heading{}
+#services article .heading{ color: white}
 #services article p{margin-bottom:30px;}
 
 /* Team */
@@ -375,7 +375,7 @@ input:focus, textarea:focus, *:required:focus{border-color:#828BF4 !important;}
 
 
 /* Navigation */
-#mainav li a{color:inherit;}
+#mainav li a{color:white;}
 #mainav .active a, #mainav a:hover, #mainav li:hover > a{color:#828BF4; background-color:inherit;}
 #mainav li li a, #mainav .active li a{color:#FFFFFF; background-color:rgba(130,139,244,.5); border-color:rgba(130,139,244,.5);/* #828BF4 */}
 #mainav li li:hover > a, #mainav .active .active > a{color:#FFFFFF; background-color:#828BF4;}
@@ -498,4 +498,8 @@ table a, #comments a{background-color:inherit;}
 
 	.font-x2{font-size:1.6rem;}
 	.font-x3{font-size:1.8rem;}
+}
+
+.height-tile {
+	height: 200px;
 }

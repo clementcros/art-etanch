@@ -1,0 +1,13 @@
+    <div id="logo" class="fl_left">
+        <h1><a href="index.html">ART-ETANCH</a></h1>
+    </div>
+    <nav id="mainav" class="fl_right">
+        <ul class="clear">
+            <li class="active"><a href="{{ path(ezpublish.rootLocation) }}">Accueil</a></li>
+            {% if menus is not null %}
+                {% for menu in menus %}
+                    <li><a href="{{ ez_field_value(menu, 'internal_link') }}">{{ ez_field_value(menu, 'title') }}</a></li>
+                {% endfor %}
+            {% endif %}
+        </ul>
+    </nav>

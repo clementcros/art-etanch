@@ -4,3 +4,15 @@ ezpublish:
             content_type:
                 homepage:
                     thumbnail: /bundles/ezplatformadminui/img/ez-icons.svg#home-page
+                list_family_kitchen:
+                    thumbnail: /bundles/ezplatformadminui/img/ez-icons.svg#catalog
+                kitchen:
+                    thumbnail: /bundles/ezplatformadminui/img/ez-icons.svg#product
+                list_kitchen:
+                    thumbnail: /bundles/ezplatformadminui/img/ez-icons.svg#product_list
+                family_kitchen:
+                    thumbnail: /bundles/ezplatformadminui/img/ez-icons.svg#category
+                list_menu:
+                    thumbnail: /bundles/ezplatformadminui/img/ez-icons.svg#list
+                menu:
+                    thumbnail: /bundles/ezplatformadminui/img/ez-icons.svg#link
