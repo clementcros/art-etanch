@@ -1,0 +1,22 @@
+-
+    type: location
+    mode: load
+    match:
+        content_type_identifier: list_menu
+    references:
+        -   identifier: list_menu_location_id
+            attribute: location_id
+
+-
+    type: content
+    mode: create
+    content_type: logo_menu
+    parent_location: "reference:list_menu_location_id"
+    attributes:
+        title: logo
+        logo:
+            path: 'img.png'
+            alt_text: 'art-etanch'
+    lang: eng-GB
+    sort_field: priority
+    sort_order: ASC

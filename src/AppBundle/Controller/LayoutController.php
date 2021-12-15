@@ -44,6 +44,18 @@ class LayoutController extends Controller
         $headerLocation = current($headerLocation);
         $headerContent = $headerLocation->getContent();
 
+        $headerLogo = $this->searchHelper->locationsList(
+            null,
+            ['logo_menu'],
+            [],
+            1
+        );
+
+
+        /** @var Location $headerLocation */
+        $headerLogo = current($headerLogo);
+        $headerLogo = $headerLogo->getContent();
+
         $menuLists = $this->searchHelper->locationsList(
             $headerLocation->id,
             ['menu', 'menu_picto'],
@@ -55,6 +67,7 @@ class LayoutController extends Controller
             '::menuLayout.html.twig',
             [
                 'menus' => $menu,
+                'logo' => $headerLogo,
             ],
             $response
         );

@@ -39,7 +39,7 @@
             category: default
             validator-configuration:
                 RelationListValueValidator:
-                    selectionLimit: 3
+                    selectionLimit: 5
             field-settings:
                 selectionDefaultLocation: "reference:list_kitchen_location_id"
                 selectionContentTypes: [ "kitchen" ]

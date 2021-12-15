@@ -1,0 +1,57 @@
+-
+    type: content_type
+    mode: update
+    match:
+        identifier: homepage
+    attributes:
+        -
+            type: ezimage
+            name:
+                eng-GB: "Image de fond pour le CTA"
+            identifier: image_background_cta
+            description:
+                eng-GB: "Image utilisé en fond du block CTA"
+            required: false
+            searchable: false
+            info-collector: false
+            disable-translation: false
+            category: default
+            position: 70
+        -
+            type: ezstring
+            name:
+                eng-GB: "Titre CTA"
+            identifier: title_cta
+            description:
+                eng-GB: "Titre du bandeau call to action"
+            required: false
+            searchable: false
+            info-collector: false
+            disable-translation: false
+            category: default
+            position: 80
+        
+        -
+            type: ezrichtext
+            name:
+                eng-GB: "Descritpion du CTA"
+            identifier: description_cta
+            description:
+                eng-GB: "Descritpion sous le titre du block CTA"
+            required: false
+            searchable: false
+            info-collector: false
+            disable-translation: false
+            category: default
+            position: 90
+        -
+            type: ezobjectrelation
+            name:
+                eng-GB: "Lien interne vers la page de contact"
+            identifier: internal_link
+            required: false
+            searchable: false
+            info-collector: false
+            disable-translation: false
+            category: default
+            position: 100

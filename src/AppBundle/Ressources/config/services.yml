@@ -11,9 +11,6 @@ services:
 
     AppBundle\Controller\:
         resource: "../../Controller/*"
-#
-#    AppBundle\Twig\:
-#        resource: "../../Twig/*"
-#
-#
 
+    AppBundle\Twig\:
+        resource: "../../Twig/*"
