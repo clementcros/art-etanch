@@ -8,3 +8,18 @@ ezpublish:
                         template: full/home_page.html.twig
                         match:
                             Identifier\ContentType: homepage
+                    list_family_kitchen:
+                        controller: AppBundle:ListFamilyKitchen:full
+                        template: full/list_family_kitchen.html.twig
+                        match:
+                            Identifier\ContentType: list_family_kitchen
+                    list_kitchen:
+                        controller: AppBundle:ListKitchen:full
+                        template: full/list_kitchen.html.twig
+                        match:
+                            Identifier\ContentType: list_kitchen
+                    family_kitchen:
+                        controller: AppBundle:FamilyKitchen:full
+                        template: full/family_kitchen.html.twig
+                        match:
+                            Identifier\ContentType: family_kitchen

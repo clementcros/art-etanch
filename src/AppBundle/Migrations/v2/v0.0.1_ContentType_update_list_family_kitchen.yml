@@ -1,0 +1,46 @@
+-
+    type: content_type
+    mode: update
+    match:
+        identifier: list_family_kitchen
+    attributes:
+        -
+            type: ezimage
+            name:
+                eng-GB: "Image de fond pour la page"
+            identifier: image
+            description:
+                eng-GB: "Image de fond pour la page list famille de cuisine"
+            required: true
+            searchable: false
+            info-collector: false
+            disable-translation: false
+            category: default
+            position: 20
+        -
+            type: ezstring
+            name:
+                eng-GB: "Titre sur le page"
+            identifier: title_page
+            description:
+                eng-GB: "Titre visible sur la page dans le header"
+            required: true
+            searchable: false
+            info-collector: false
+            disable-translation: false
+            category: default
+            position: 30
+
+        -
+            type: ezrichtext
+            name:
+                eng-GB: "Descritpion"
+            identifier: description
+            description:
+                eng-GB: "Descritpion présent sur la page dans le header"
+            required: false
+            searchable: false
+            info-collector: false
+            disable-translation: false
+            category: default
+            position: 40

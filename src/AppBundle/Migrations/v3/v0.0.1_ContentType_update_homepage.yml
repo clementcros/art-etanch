@@ -1,0 +1,60 @@
+-
+    type: location
+    mode: load
+    match:
+        content_type_identifier: list_family_kitchen
+    references:
+        -   identifier: list_family_kitchen_location_id
+            attribute: location_id
+-
+    type: content_type
+    mode: update
+    match:
+        identifier: homepage
+    attributes:
+        -
+            type: ezstring
+            name:
+                eng-GB: "Titre Block style de cuisines"
+            identifier: title_family_kitchen
+            description:
+                eng-GB: "Titre du block style de cuisine"
+            required: false
+            searchable: false
+            info-collector: false
+            disable-translation: false
+            category: default
+            position: 110
+
+        -
+            type: ezrichtext
+            name:
+                eng-GB: "Descritpion style de cuisine mise en avant"
+            identifier: description_kitchen_family
+            description:
+                eng-GB: "Descritpion style de cuisine mise en avant"
+            required: false
+            searchable: false
+            info-collector: false
+            disable-translation: false
+            category: default
+            position: 120
+        -
+            type: ezobjectrelationlist
+            name:
+                eng-GB: "Style de cuisine mise en avant"
+            identifier: kitchen_family_relation
+            description:
+                eng-GB: "Style de cuisines mise en avant dans le carouselle"
+            required: false
+            searchable: false
+            info-collector: false
+            disable-translation: false
+            category: default
+            validator-configuration:
+                RelationListValueValidator:
+                    selectionLimit: 9
+            field-settings:
+                selectionDefaultLocation: "reference:list_family_kitchen_location_id"
+                selectionContentTypes: [ "family_kitchen" ]
+            position: 130

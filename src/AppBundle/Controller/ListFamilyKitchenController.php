@@ -5,8 +5,9 @@ use AppBundle\Utils\SearchHelper;
 use eZ\Bundle\EzPublishCoreBundle\Controller;
 use eZ\Publish\Core\MVC\Symfony\View\ContentView;
 
-class HomeController extends Controller
+class ListFamilyKitchenController extends Controller
 {
+
 
     /**
      * @var SearchHelper
@@ -30,25 +31,29 @@ class HomeController extends Controller
     public function fullAction(ContentView $view): ContentView
     {
 
-        $kitchens = $this->searchHelper->getTargetOfRelations(
-            $view->getContent(),
-            'kitchen_relation',
-            true,
-            false
+        $kitchenFamily = $this->searchHelper->locationsList(
+            $view->getLocation()->id,
+            ['family_kitchen'],
+            []
         );
-
-        $kitchensFamily = $this->searchHelper->getTargetOfRelations(
-            $view->getContent(),
-            'kitchen_family_relation',
-            true,
-            false
-        );
+        $kitchenFamily = $this->getMenuLocationList($kitchenFamily);
 
         $view->addParameters([
-            'kitchens' => $kitchens,
-            'kitchensFamily' => $kitchensFamily
+            'kitchenFamily' => $kitchenFamily,
         ]);
 
         return $view;
+    }
+
+    /**
+     * @param $list
+     * @return array
+     */
+    private function getMenuLocationList($list) {
+        $data = array();
+        foreach ($list as $menuList) {
+            array_push($data,$menuList->getContent());
+        }
+        return $data;
     }
 }

@@ -16,3 +16,5 @@ ezpublish:
                     thumbnail: /bundles/ezplatformadminui/img/ez-icons.svg#list
                 menu:
                     thumbnail: /bundles/ezplatformadminui/img/ez-icons.svg#link
+                logo_menu:
+                    thumbnail: /bundles/ezplatformadminui/img/ez-icons.svg#gallery

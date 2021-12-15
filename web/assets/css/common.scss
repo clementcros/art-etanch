@@ -4,3 +4,23 @@
     background-position: center;
     background-size: cover;
 }
+
+.no-href-style {
+    text-decoration: none;
+    color: black
+}
+
+.no-href-style:hover {
+    text-decoration: none;
+    color: black
+}
+
+.darkness-hover:hover {
+    -webkit-filter: brightness(70%);
+    -moz-filter: brightness(70%);
+    -o-filter: brightness(70%);
+    -ms-filter: brightness(70%);
+    filter: brightness(70%);
+    transition: 0.5s;
+    transition-delay: .1s;
+}

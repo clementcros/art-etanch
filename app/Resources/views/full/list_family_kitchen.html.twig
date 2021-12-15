@@ -1,0 +1,45 @@
+{% extends 'pagelayout.html.twig' %}
+
+{% block content %}
+    <section class="bg-light pt-5 pb-5 custom-background"
+            {% if not ez_is_field_empty(content, 'image') %}
+                style="background-image: url('{{ ez_field_value(content, 'image').uri }}');"
+            {% endif %}>
+        <div class="container pb-5">
+            <div class="row justify-content-center d-flex text-white">
+                <div class="col-xs-12 col-md-10 align-self-center">
+                    <h1 class="display-4 text-center  mb-3 mt-5">{{ ez_field_value(content, 'title_page') }}</h1>
+                    <p class="lead  text-center">
+                        {% if not ez_is_field_empty(content, 'description') %}
+                            {{ ez_render_field(content, 'description') }}
+                        {% endif %}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="pt-5 pb-5">
+        <div class="container">
+            <div class="row">
+                {% for kitchen in kitchenFamily %}
+                <a class="col-md-4 mb-4 no-href-style" href="{{ path( "ez_urlalias", {"locationId": kitchen.versionInfo.contentInfo.mainLocationId} ) }}">
+                    <div class="card shadow-sm">
+                        {% if not ez_is_field_empty(kitchen, 'image_tile') %}
+                            <img class="img-thumbnail darkness-hover" alt="100%x280" style="height: 290px"
+                                 src="{{ ez_field_value(kitchen, 'image_tile').uri }}">
+                        {% endif %}
+                        <div class="card-body">
+                            <h4 class="card-title">{{ ez_field_value(kitchen, 'family_kitchen_title') }}</h4>
+                            <p class="card-text">{% if not ez_is_field_empty(kitchen, 'short_description') %}
+                                    {{ ez_render_field(kitchen, 'short_description') }}
+                                {% endif %}</p>
+                        </div>
+                    </div>
+                </a>
+                {% endfor %}
+                <div class="col-md-4 mb-4">
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

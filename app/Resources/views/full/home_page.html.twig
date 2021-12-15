@@ -27,14 +27,14 @@
         <section class="pt-5 pb-5">
             <div class="container ">
                 <div class="row d-md-flex-row   ">
-                    <div class="col-md-5 ms-md-0 col-12   d-flex  ">
+                    <div class="col-md-5 ms-md-0 col-12   d-flex darkness-hover ">
                         <div class="card p-0   w-100 h-100 text-light shadow-lg  border-0 ">
                             {% if not ez_is_field_empty(kitchens.0, 'image_tile') %}
                                 <img class="card-img h-100 w-100"
                                      src="{{ ez_field_value(kitchens.0, 'image_tile').uri }}"
                                      alt="Card image">
                             {% endif %}
-                            <a class="card-img-overlay p-1 p-md-3 " href="{{ path( "ez_urlalias", {"locationId": kitchens.0.versionInfo.contentInfo.mainLocationId} ) }}">
+                            <a class="card-img-overlay p-1 p-md-3 no-href-style" href="{{ path( "ez_urlalias", {"locationId": kitchens.0.versionInfo.contentInfo.mainLocationId} ) }}">
                                 <div class="position-relative  w-100 h-25  d-flex">
                                     <div class="container-fluid align-self-start   mt-2 mb-2">
                                         <div class="row">
@@ -81,12 +81,12 @@
                             <div class="row align-content-center">
                                 {% for kitchen in kitchens %}
                                     {% if loop.index != 1 %}
-                                        <a class="card p-2 col-md-6  no-gutters text-light  border-light "
+                                        <a class="card p-2 col-md-6  no-gutters text-light  border-light darkness-hover "
                                            data-toggle="modal"
                                            data-target=".bd-example-modal-lg"
                                             href="{{ path( "ez_urlalias", {"locationId": kitchen.versionInfo.contentInfo.mainLocationId} ) }}">
                                             {% if not ez_is_field_empty(kitchen, 'image_tile') %}
-                                                <img class="card-img h-100 shadow" src="{{ ez_field_value(kitchen, 'image_tile').uri }}">
+                                                <img class="card-img h-100 shadow darkness-hover" src="{{ ez_field_value(kitchen, 'image_tile').uri }}">
                                             {% endif %}
 
                                             <div class="card-img-overlay p-1 d-flex  flex-column  align-items-baseline justify-content-center ">
@@ -141,7 +141,7 @@
     </section>
 {#    CTA #}
     <section class="mt-0 mb-5 pb-0 bg-dark cover"
-             style="min-height: 50vw;
+             style="min-height: 20vw;
              {% if not ez_is_field_empty(content, 'image_background_cta') %}
                      background: url('{{ ez_field_value(content, 'image_background_cta').uri }}');
                      background-repeat: no-repeat;
@@ -150,7 +150,7 @@
             ">
         <div class="container">
             <div class="row d-flex justify-content-center align-items-center"
-                 style="min-height: 50vw; ">
+                 style="min-height: 20vw; ">
                 <div class="col-md-6">
                     <div class="card">
                         <div class="card-body text-center p-5">
@@ -167,6 +167,44 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+{#    carouselle#}
+    <section class="pt-5 pb-5">
+        <div class="container">
+            <div class="col-6">
+                {% if not ez_is_field_empty(content, 'title_family_kitchen') %}
+                    <h3 class="mb-3">{{ ez_field_value(content, 'title_family_kitchen') }}</h3>
+                {% endif %}
+                {% if not ez_is_field_empty(content, 'description_kitchen_family') %}
+                    {{ ez_render_field(content, 'description_kitchen_family') }}
+                {% endif %}
+            </div>
+            <div class="row">
+                {% for kitchenStyle in kitchensFamily %}
+                    <div class="col-lg-4 col-sm-6 mb-4">
+                        <div class="card h-100">
+                            <a href="{{ path( "ez_urlalias", {"locationId": kitchenStyle.versionInfo.contentInfo.mainLocationId} ) }}">
+                                {% if not ez_is_field_empty(kitchenStyle, 'image_tile') %}
+                                    <img class="card-img-top" alt="100%x280" style="height: 290px" src="{{ ez_field_value(kitchenStyle, 'image_tile').uri }}"
+                                         alt="">
+                                {% endif %}
+
+                            </a>
+                            <div class="card-body">
+                                <h4 class="card-title">
+                                    <a class="no-href-style" href="{{ path( "ez_urlalias", {"locationId": kitchenStyle.versionInfo.contentInfo.mainLocationId} ) }}">{{ ez_field_value(kitchenStyle, 'family_kitchen_title') }}</a>
+                                </h4>
+                                <p class="card-text">
+                                    {% if not ez_is_field_empty(kitchenStyle, 'short_description') %}
+                                        {{ ez_render_field(kitchenStyle, 'short_description') }}
+                                    {% endif %}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
             </div>
         </div>
     </section>

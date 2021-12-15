@@ -1,0 +1,56 @@
+{% extends 'pagelayout.html.twig' %}
+
+{% block content %}
+    <section class="pt-5 pb-5 mt-0 align-items-center d-flex bg-light custom-background"
+             style="min-height: 60vh;
+             {% if not ez_is_field_empty(content, 'image') %}
+                     background-image: url('{{ ez_field_value(content, 'image').uri }}');
+             {% endif %}
+                     ">
+        <div class="container " style="">
+            <div class="row mt-auto">
+                <div class="col-lg-8 col-sm-12 text-center mx-auto text-white">
+                    {#                    {% if not ez_is_field_empty(content, 'title') %} #}
+                    {#                        <h1 class="display-4 mb-3">{{ ez_field_value(content, 'title') }}</h1> #}
+                    {#                    {% endif %} #}
+                    {% if not ez_is_field_empty(content, 'short_description') %}
+                        <p class="lead mb-5">    {{ ez_render_field(content, 'short_description') }}</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </section>
+    {#    Content kitchens #}
+    <section class="pt-3 pb-5">
+        <div class="container">
+            {% for kitchen in kitchens %}
+                <div class="text-center pb-0">
+                        <div class="row justify-content-center d-flex">
+                            <div class="col-12 col-md-12 align-self-center">
+                                {% if not ez_is_field_empty(kitchen, 'image') %}
+                                <a class="no-href-style" href="{{ path( "ez_urlalias", {"locationId": kitchen.versionInfo.contentInfo.mainLocationId} ) }}">
+                                    <img src="{{ ez_field_value(kitchen, 'image').uri }}" alt=""
+                                         class="img-fluid shadow-lg rounded mt-2 mb-2" style="margin:auto">
+                                </a>
+                                {% endif %}
+
+                                <div class="row mt-5  justify-content-around d-flex">
+                                    <div class="col-md-12">
+                                        <div class="featured-list-icon mt-1 mr-md-2 mb-4">
+                                        </div>
+                                        <h5 class="mb-12">{{ ez_field_value(kitchen, 'title') }}</h5>
+                                        <p class="fw-light">Lorem ipsum dolor sit amet. Id omnis dicta ab molestiae inventore et natus aliquid aut debitis sapiente sit temporibus voluptas eum consequatur? Ea minus quia non Quis quia cum internos quidem. Aut harum rerum qui exercitationem error in dolores totam in blanditiis laborum quo maxime voluptas!</p>
+                                    </div>
+                                    <div class="row">
+                                        <div class="mb-3">
+                                            <a href="{{ path( "ez_urlalias", {"locationId": kitchen.versionInfo.contentInfo.mainLocationId} ) }}" class="btn btn-secondary">Voir notre cuisine {{ ez_field_value(kitchen, 'title') }}</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+{% endblock %}
