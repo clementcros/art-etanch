@@ -5,15 +5,13 @@
         <div class="container">
             <div class="row">
                 <div class="col text-center">
-                    <h1>Nice heading goes here</h1>
-                    <h2>Subtitle comes here.</h2>
-                    <p class="text-h3">
-                        <a href="https://generator.ws">Learn More
-                            &gt;</a>&nbsp;&nbsp;&nbsp;&nbsp;
-                        <a href="https://generator.ws">Buy &gt;</a>
-                    </p>
+                    <h1>{{ ez_field_value(content, 'title') }}</h1>
+{#                    <h2>Subtitle comes here.</h2>#}
+                    {% if not ez_is_field_empty(content, 'image') %}
                     <img alt="image" class="img-fluid mt-5"
-                         src="  https://dummyimage.com/1320x500/5fa9f8/efefef">
+                     src="{{ ez_field_value(content, 'image').uri }}">
+                    {% endif %}
+
                 </div>
             </div>
         </div>
@@ -22,114 +20,57 @@
         <div class="container">
             <div class="row mt-0 mb-2 pt-5 d-flex justify-content-center">
                 <div class="col-md-10 col-sm-12 ">
-                    <h1 class="blog-post-title">Sample blog post</h1>
-                    <p class="blog-post-meta">November 1, 2017 by
-                        <a href="#">Bootstraptor</a>
-                    </p>
-                    <p class="lead">Using these templates, you’ll never have to start
-                        the templating process 100% from scratch again. Just fill out the
-                        form to the right to grab your templates, then go put some
-                        publish-worth words behind that evil blinking cursor!
-                        This blog post shows a few different types of content that is
-                        supported and styled with Bootstrap. Basic typography, images, and
-                        code are all supported.
-                    </p>
-                    <hr>
-                    <div class="row mt-4">
-                        <div class="col-md-4 col-sm-12 ">
-                            <blockquote class="p-0  text-primary">
-                                "Because I got the answers. I understand culture. I am the
-                                nucleus. "
-                            </blockquote>
+                    {{ ez_render_field(content, 'text_content') }}
+                </div>
+            </div>
+        </div>
+    </section>
+    {% if images is not null %}
+        <section class="pt-3 pb-3">
+            <div class="container">
+                <div class="row row-grid">
+                    {% for image in images %}
+                        <div class="col-xs-6 col-md-3 my-1">
+                            <figure class="figure">
+                                <img src="{{ ez_field_value(image, 'image').uri }}"
+                                     class="figure-img img-fluid rounded kitchen-images"
+                                     {% if not ez_is_field_empty(image, 'name') %}
+                                        alt="{{ ez_field_value(image, 'name') }}"
+                                     {% endif %}
+                                >
+                                {% if not ez_is_field_empty(image, 'caption') %}
+                                    <figcaption class="figure-caption">
+                                        {{ ez_render_field(image, 'caption') }}
+                                    </figcaption>
+                                {% endif %}
+                            </figure>
                         </div>
-                        <div class="col-md-8 col-sm-12 ">
-                            <p>So why, oh why, does almost every marketer I talk to have a
-                                laundry list of excuses for why they can not consistently
-                                blog?
-                                Maybe because, unless you are one of the few people who
-                                actually like writing, business blogging kind of
-                                stinks. You have to find words, string them together into
-                                sentences, and ughhh where do you even start?
-                            </p>
-                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+    {% endif %}
+    {% if kitchensRelations is not null %}
+        <section class="pt-5 pb-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col text-center">
+                        <h1>Découvrez nos autres cuisines</h1>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-    <section class="pt-3 pb-3">
-        <div class="container">
-            <div class="row row-grid">
-                <div class="col-xs-6 col-md-3 my-1">
-                    <figure class="figure">
-                        <img src=" https://dummyimage.com/300x300/5fa9f8/ffffff"
-                             class="figure-img img-fluid rounded"
-                             alt="A generic square placeholder image with rounded corners in a figure.">
-                        <figcaption class="figure-caption">A caption for the above image.
-                        </figcaption>
-                    </figure>
-                </div>
-                <div class="col-xs-6 col-md-3 my-1">
-                    <figure class="figure">
-                        <img src=" https://dummyimage.com/300x300/5fa9f8/ffffff"
-                             class="figure-img img-fluid rounded"
-                             alt="A generic square placeholder image with rounded corners in a figure.">
-                        <figcaption class="figure-caption">A caption for the above image.
-                        </figcaption>
-                    </figure>
-                </div>
-                <div class="col-xs-6 col-md-3 my-1">
-                    <figure class="figure">
-                        <img src=" https://dummyimage.com/300x300/5fa9f8/ffffff"
-                             class="figure-img img-fluid rounded"
-                             alt="A generic square placeholder image with rounded corners in a figure.">
-                        <figcaption class="figure-caption">A caption for the above image.
-                        </figcaption>
-                    </figure>
-                </div>
-                <div class="col-xs-6 col-md-3 my-1">
-                    <figure class="figure">
-                        <img src=" https://dummyimage.com/300x300/5fa9f8/ffffff"
-                             class="figure-img img-fluid rounded"
-                             alt="A generic square placeholder image with rounded corners in a figure.">
-                        <figcaption class="figure-caption">A caption for the above image.
-                        </figcaption>
-                    </figure>
+                <div class="row pt-4">
+                    {% for kitchen in kitchensRelations %}
+                            <div class="col-md-4">
+                                <a class="no-href-style" href="{{ path( "ez_urlalias", {"locationId": kitchen.versionInfo.contentInfo.mainLocationId} ) }}">
+                                    <img alt="image" class="img-fluid rounded mt-1 mb-2 kitchen-images-relations"
+                                         src="{{ ez_field_value(kitchen, 'image_tile').uri }}">
+                                    <p class="text-h3 text-center">{{ ez_field_value(kitchen, 'title') }} </p>
+                                </a>
+                            </div>
+
+                    {% endfor %}
                 </div>
             </div>
-        </div>
-    </section>
-    <section class="pt-5 pb-5">
-        <div class="container">
-            <div class="row">
-                <div class="col text-center">
-                    <h1> Generator</h1>
-                </div>
-            </div>
-            <div class="row pt-4">
-                <div class="col-md-4">
-                    <img alt="image" class="img-fluid rounded mt-1 mb-2"
-                         src=" https://dummyimage.com/1170x700/5fa9f8/efefef">
-                    <p class="text-h3">Vivamus sagittis lacus vel augue laoreet rutrum
-                        faucibus dolor auctor. Duis mollis, est non commodo luctus. </p>
-                </div>
-                <div class="col-md-4">
-                    <img alt="image" class="img-fluid rounded mt-1 mb-2"
-                         src=" https://dummyimage.com/1170x700/5fa9f8/efefef">
-                    <p class="text-h3">Vivamus sagittis lacus vel augue laoreet rutrum
-                        faucibus dolor auctor.
-                        <a href="https://generator.ws">Duis mollis</a>.
-                    </p>
-                </div>
-                <div class="col-md-4">
-                    <img alt="image" class="img-fluid rounded mt-1 mb-2"
-                         src=" https://dummyimage.com/1170x700/5fa9f8/efefef">
-                    <p class="text-h3">Duis mollis, est non commodo luctus. Vivamus
-                        sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.
-                        <a href="https://generator.ws">Duis mollis</a>.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
+    {% endif %}
 {% endblock %}

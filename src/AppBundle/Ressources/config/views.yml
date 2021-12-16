@@ -24,6 +24,7 @@ ezpublish:
                         match:
                             Identifier\ContentType: family_kitchen
                     Kitchen:
+                        controller: AppBundle:Kitchen:full
                         template: full/kitchen.html.twig
                         match:
                             Identifier\ContentType: kitchen

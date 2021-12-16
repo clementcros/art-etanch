@@ -82,8 +82,6 @@
                                 {% for kitchen in kitchens %}
                                     {% if loop.index != 1 %}
                                         <a class="card p-2 col-md-6  no-gutters text-light  border-light darkness-hover "
-                                           data-toggle="modal"
-                                           data-target=".bd-example-modal-lg"
                                             href="{{ path( "ez_urlalias", {"locationId": kitchen.versionInfo.contentInfo.mainLocationId} ) }}">
                                             {% if not ez_is_field_empty(kitchen, 'image_tile') %}
                                                 <img class="card-img h-100 shadow darkness-hover" src="{{ ez_field_value(kitchen, 'image_tile').uri }}">
