@@ -23,3 +23,7 @@ ezpublish:
                         template: full/family_kitchen.html.twig
                         match:
                             Identifier\ContentType: family_kitchen
+                    Kitchen:
+                        template: full/kitchen.html.twig
+                        match:
+                            Identifier\ContentType: kitchen
