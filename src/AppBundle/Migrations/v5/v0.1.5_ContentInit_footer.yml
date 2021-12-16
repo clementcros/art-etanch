@@ -1,0 +1,10 @@
+-
+    type: content
+    mode: create
+    content_type: list_footer
+    parent_location: 2
+    attributes:
+        title: Liste des menus du footer
+    lang: eng-GB
+    sort_field: priority
+    sort_order: ASC

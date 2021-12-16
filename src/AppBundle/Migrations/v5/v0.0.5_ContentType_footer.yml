@@ -1,0 +1,47 @@
+-
+    type: content_type
+    mode: create
+    content_type_group: Content
+    identifier: footer
+    name:
+        eng-GB: "Menu footer"
+    name_pattern: <title>
+    is_container: true
+    attributes:
+        -
+            type: ezstring
+            name:
+                eng-GB: "Titre"
+            identifier: title
+            description:
+                eng-GB: "Titre du menu"
+            required: true
+            searchable: true
+            info-collector: false
+            disable-translation: false
+            category: default
+            position: 10
+        -
+            type: ezobjectrelation
+            name:
+                eng-GB: "Lien interne"
+            identifier: internal_link
+            required: false
+            searchable: false
+            info-collector: false
+            disable-translation: false
+            category: default
+            position: 20
+        -
+            type: ezurl
+            name:
+                eng-GB: "Lien externe"
+            identifier: external_link
+            description:
+                eng-GB: "Prioritaire sur le lien interne si les 2 attributs sont contribués"
+            required: false
+            searchable: false
+            info-collector: false
+            disable-translation: false
+            category: default
+            position: 30

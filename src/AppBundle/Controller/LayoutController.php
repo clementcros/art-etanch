@@ -74,6 +74,49 @@ class LayoutController extends Controller
 
     }
 
+    public function footerAction(int $currentLocationId): Response
+    {
+        $rootLocation = $this->getRootLocation();
+        $headerLocation = $this->searchHelper->locationsList(
+            $rootLocation->id,
+            ['list_footer'],
+            [],
+            1
+        );
+
+        /** @var Location $headerLocation */
+        $headerLocation = current($headerLocation);
+        $headerContent = $headerLocation->getContent();
+
+        $headerLogo = $this->searchHelper->locationsList(
+            null,
+            ['logo_menu'],
+            [],
+            1
+        );
+
+
+        /** @var Location $headerLocation */
+        $headerLogo = current($headerLogo);
+        $logo = $headerLogo->getContent();
+
+        $menuLists = $this->searchHelper->locationsList(
+            $headerLocation->id,
+            ['footer', 'menu_picto'],
+            []
+        );
+        $menu = $this->getMenuLocationList($menuLists);
+        $response = new Response();
+        return $this->render(
+            '::footerLayout.html.twig',
+            [
+                'menus' => $menu,
+                'logo' => $logo,
+            ],
+            $response
+        );
+    }
+
     /**
      * @param $list
      * @return array
