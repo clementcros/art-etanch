@@ -1,0 +1,106 @@
+{% extends 'pagelayout.html.twig' %}
+
+{% block content %}
+    <section class="pb-5 pt-0">
+        <grammarly-extension data-grammarly-shadow-root="true"
+                             style="position: absolute; top: 0px; left: 0px; pointer-events: none;"
+                             class="cGcvT"></grammarly-extension>
+        <div class="container-fluid p-0 pb-3">
+            <div style="width: 100%"><iframe width="100%" height="300" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=100%25&amp;height=300&amp;hl=en&amp;q=6%20Rue%20de%20Copenhague,%2034350%20Vendres+(Art-etanch)&amp;t=&amp;z=15&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"><a href="https://www.gps.ie/sport-gps/">gps watches</a></iframe>
+        </div>
+    </section>
+    <section class="pb-5 pt-5">
+        {% if sended == true %}
+            <div class="container-fluid">
+                <div class="row d-flex">
+                    <div class="col-md-12">
+                        <div class="card bg-success text-light text-center border-0">
+                            <div class="card-body pt-3 pb-1">
+                                <p class="lead pb-0 mb-1">Votre message a bien été envoyé
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+        <grammarly-extension data-grammarly-shadow-root="true"
+                             style="position: absolute; top: 0px; left: 0px; pointer-events: none;"
+                             class="cGcvT"></grammarly-extension>
+        <div class="bg-gray">
+            <div class="container">
+                <div class="row-100"></div>
+                <div class="row text-left">
+                    <div class="col-8">
+                        <h3 class="display-4 fw-bold">{{ ez_field_value(content, 'title') }}</h3>
+                    </div>
+                </div>
+                <div class="row-100"></div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row-100"></div>
+            <div class="row">
+                <div class="col-12 col-md-6 col-lg-5">
+                    {% if not ez_is_field_empty(content, 'content') %}
+                        {{ ez_render_field(content, 'content') }}
+                    {% endif %}
+                </div>
+                <div class="col-12 col-md-6 ms-auto">
+                    <h2>Formulaire de contact</h2>
+                    <form method="post" action="{{ path( "ez_urlalias", {"locationId": content.versionInfo.contentInfo.mainLocationId} ) }}">
+                        <div class="row">
+                            <div class="col">
+                                <input type="text" class="form-control" name="name"
+                                       placeholder="Nom">
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control" name="lastname"
+                                       placeholder="Prénom">
+                            </div>
+                        </div>
+                        <div class="row mt-4">
+                            <div class="col">
+                                <input type="text" class="form-control" name="enterprise"
+                                       placeholder="Entreprise ( optionel )">
+                            </div>
+                        </div>
+                        <div class="row mt-4">
+                            <div class="col">
+                                <input type="email" required class="form-control" placeholder="Email" name="email">
+                            </div>
+                        </div>
+                        <div class="row mt-4">
+                            <div class="col">
+                                <input type="text" class="form-control" placeholder="Téléphone ( optionel )" name="phone">
+                            </div>
+                        </div>
+                        <div class="row mt-4">
+                            <div class="col">
+                                <select class="form-control border-secondary" required="" name="type">
+                                    <option value="">Quelle est votre demande ?</option>
+                                    <option value="Premier contact">Premier contact</option>
+                                    <option value="Demande de devis">Demande de devis</option>
+                                    <option value="SAV">SAV</option>
+                                    <option value="Autre">Autre</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row mt-4">
+                            <div class="col">
+                  <textarea class="form-control  border-secondary"
+                            name="message" rows="5" placeholder="Rédiger votre message"
+                            style="margin-top: 0px; margin-bottom: 0px; height: 162px;"
+                            spellcheck="false"></textarea>
+                            </div>
+                        </div>
+                        <div class="row mt-4">
+                            <div class="col">
+                                <button type="submit" class="btn btn-primary">Envoyer</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

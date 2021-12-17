@@ -1,0 +1,10 @@
+-
+    type: content
+    mode: create
+    content_type: contact
+    parent_location: 2
+    attributes:
+        title: Contact
+    lang: eng-GB
+    sort_field: priority
+    sort_order: ASC

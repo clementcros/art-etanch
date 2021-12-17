@@ -28,3 +28,8 @@ ezpublish:
                         template: full/kitchen.html.twig
                         match:
                             Identifier\ContentType: kitchen
+                    contact:
+                        controller: AppBundle:Contact:full
+                        template: full/contact.html.twig
+                        match:
+                            Identifier\ContentType: contact

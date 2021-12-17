@@ -44,7 +44,6 @@
                 selectionDefaultLocation: "reference:list_kitchen_location_id"
                 selectionContentTypes: [ "kitchen" ]
             position: 50
-        
         -
             type: ezrichtext
             name:
