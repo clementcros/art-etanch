@@ -3,3 +3,6 @@ imports:
     - { resource: back_office.yml }
     - { resource: routing.yml }
     - { resource: views.yml }
+
+twig:
+    exception_controller: AppBundle\Controller\ExceptionController:showAction

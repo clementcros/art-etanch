@@ -29,7 +29,7 @@ class LayoutController extends Controller
      * @param ContentView $view
      * @return Response
      */
-    public function headerAction(int $currentLocationId): Response
+    public function headerAction($currentLocationId): Response
     {
 
         $rootLocation = $this->getRootLocation();
@@ -74,7 +74,7 @@ class LayoutController extends Controller
 
     }
 
-    public function footerAction(int $currentLocationId): Response
+    public function footerAction($currentLocationId): Response
     {
         $rootLocation = $this->getRootLocation();
         $headerLocation = $this->searchHelper->locationsList(
