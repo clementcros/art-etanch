@@ -62,7 +62,6 @@ class EmailHelper
             1
         );
 
-
         $homePage = current($homePage);
         /* @var ContentProxy $homePageContent */
         $homePageContent = $homePage->getContent();

@@ -14,3 +14,20 @@ services:
 
     AppBundle\Twig\:
         resource: "../../Twig/*"
+
+    appbundle.menu.builder.listener:
+        class: AppBundle\Event\MenuListener
+        public: false
+        arguments:
+            - "@service_container"
+        tags:
+            - { name: kernel.event_subscriber }
+
+    appbundle.blend_sitemap.content:
+        class: AppBundle\Service\ContentLoader
+        arguments:
+            - "@ezpublish.api.service.location"
+            - "@ezpublish.api.service.search"
+            - "@ezpublish.api.service.section"
+        calls:
+            - [ setContainer, [ '@service_container' ] ]
