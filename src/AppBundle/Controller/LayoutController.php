@@ -10,6 +10,18 @@ use Symfony\Component\HttpFoundation\Response;
 class LayoutController extends Controller
 {
 
+    const TITLE = [
+        'title',
+        'name',
+        'family_kitchen_title'
+    ];
+    const DESCRITPION = [
+        'description',
+        'short_description',
+        'text_content',
+        'content'
+    ];
+
     /**
      * @var SearchHelper
      */
@@ -23,6 +35,40 @@ class LayoutController extends Controller
     )
     {
         $this->searchHelper = $searchHelper;
+    }
+
+    public function metaAction($currentLocationId): Response
+    {
+        $content = $this->searchHelper->loadLocationById($currentLocationId)->getContent();
+        $titleMeta = null;
+        $descriptionMeta = null;
+
+        foreach ($content->getFields() as $field)
+        {
+            if (in_array($field->fieldDefIdentifier, self::TITLE)) {
+                $titleMeta = $field->fieldDefIdentifier;
+                break;
+            }
+        }
+
+        foreach ($content->getFields() as $field)
+        {
+            if (in_array($field->fieldDefIdentifier, self::DESCRITPION)) {
+                 $descriptionMeta = $field->fieldDefIdentifier;
+                break;
+            }
+        }
+
+        $response = new Response();
+        return $this->render(
+            '::metaLayout.html.twig',
+            [
+                'content' => $content,
+                'title' => $titleMeta,
+                'description' => $descriptionMeta
+            ],
+            $response
+        );
     }
 
     /**
