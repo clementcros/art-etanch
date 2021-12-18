@@ -40,6 +40,20 @@ class SiteMapController extends Controller
         return $this->redirect($request->server->get("HTTP_REFERER"));
     }
 
+    public function robotsAction()
+    {
+        $response = new Response();
+        $response->setPublic();
+        $response->setSharedMaxAge(86400);
+        $response->headers->set('X-Location-Id', 2);
+        $response->headers->set('Content-Type', 'application/xml');
+        $response->sendHeaders();
+        $siteMap = getcwd().'/robots.txt';
+
+        return $response->setContent(file_get_contents($siteMap));
+
+    }
+
     public function viewAction()
     {
         $response = new Response();

@@ -84,3 +84,11 @@ Copyright (C) 1999-2020 eZ Systems AS. All rights reserved.
 
 ## LICENSE
 http://www.gnu.org/licenses/gpl-2.0.txt GNU General Public License v2
+
+A faire pour le déploiement :
+
+- 1- Aller dans le BO et modifier le contentType folder en homepage
+- 2- changer les uri dans le robots.txt
+- 3- paramètrer les mails
+- 4- lancer les migrations
+- 5- crée les premiers éléments et contribuer la page d'accueil

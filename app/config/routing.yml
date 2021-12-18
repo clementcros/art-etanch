@@ -69,3 +69,7 @@ generate_sitemap:
 blend_sitemap:
     path:  /sitemap.xml
     defaults: { _controller: AppBundle:SiteMap:view }
+
+_robots:
+    path: /robots.txt
+    defaults: { _controller: AppBundle:SiteMap:robots }
