@@ -46,9 +46,19 @@ class KitchenController extends Controller
             false
         );
 
+        $fileDownload = $this->searchHelper->locationsList(
+            $view->getLocation()->id,
+            ['file_download'],
+            []
+        );
+
+        $fileDownload = $this->getContentLocationList($fileDownload);
+
+
         $view->addParameters([
             'images' => $images,
             'kitchensRelations' => $kitchensRelations,
+            'files' => $fileDownload
         ]);
 
         return $view;

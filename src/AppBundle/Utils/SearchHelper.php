@@ -447,16 +447,12 @@ class SearchHelper
 
         if (count($relations)) {
             foreach ($relations as $relationId) {
-                // Get content of relation object.
                 $contentRelation = $this->contentService->loadContent($relationId);
 
-                // Check if content is published, because if it is in the trash the link of relation isnt destroy.
                 if ($contentRelation->contentInfo->published) {
-                    // Get main location of relation content.
                     $mainLocationRelation = $this->locationService
                         ->loadLocation($contentRelation->contentInfo->mainLocationId);
 
-                    // Add result if relation is visible or if is hidden but relation hidden is needed.
                     if ((false == $mainLocationRelation->hidden || true == $mainLocationRelation->hidden
                             && true == $showHiddenRelation)
                         && ($contentRelation->contentInfo->alwaysAvailable ||

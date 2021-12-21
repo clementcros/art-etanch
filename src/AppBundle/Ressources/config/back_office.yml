@@ -24,3 +24,5 @@ ezpublish:
                     thumbnail: /bundles/ezplatformadminui/img/ez-icons.svg#link-remove
                 contact:
                     thumbnail: /bundles/ezplatformadminui/img/ez-icons.svg#newsletter
+                file_download:
+                    thumbnail: /bundles/ezplatformadminui/img/ez-icons.svg#pdf-file

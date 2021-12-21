@@ -1,0 +1,36 @@
+-
+    type: content_type
+    mode: create
+    content_type_group: Content
+    identifier: file_download
+    name:
+        eng-GB: "Fichiers a télécharger"
+    name_pattern: <title>
+    is_container: false
+    attributes:
+        -
+            type: ezstring
+            name:
+                eng-GB: "Titre"
+            identifier: title
+            description:
+                eng-GB: "Titre du fichier"
+            required: true
+            searchable: true
+            info-collector: false
+            disable-translation: false
+            category: default
+            position: 10
+        -
+            type: ezbinaryfile
+            name:
+                eng-GB: "Fichier"
+            identifier: file
+            description:
+                eng-GB: "Fichier disponible au téléchargement"
+            required: true
+            searchable: true
+            info-collector: false
+            disable-translation: false
+            category: default
+            position: 20

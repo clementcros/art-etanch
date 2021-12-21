@@ -1,3 +1,4 @@
+{% import 'macros/external_or_internal_link.html.twig' as link %}
 {% extends 'pagelayout.html.twig' %}
 
 {% block content %}
@@ -23,37 +24,23 @@
     </section>
 
 {#    Kitchen related #}
-    {% if kitchens is not null %}
+    {% if kitchens is not empty %}
         <section class="pt-5 pb-5">
             <div class="container ">
                 <div class="row d-md-flex-row   ">
-                    <div class="col-md-5 ms-md-0 col-12   d-flex darkness-hover ">
+                    <div class="col-md-5 ms-md-0 col-12   d-flex ">
                         <div class="card p-0   w-100 h-100 text-light shadow-lg  border-0 ">
                             {% if not ez_is_field_empty(kitchens.0, 'image_tile') %}
                                 <img class="card-img h-100 w-100"
                                      src="{{ ez_field_value(kitchens.0, 'image_tile').uri }}"
                                      alt="Card image">
                             {% endif %}
-                            <a class="card-img-overlay p-1 p-md-3 no-href-style" href="{{ path( "ez_urlalias", {"locationId": kitchens.0.versionInfo.contentInfo.mainLocationId} ) }}">
-                                <div class="position-relative  w-100 h-25  d-flex">
-                                    <div class="container-fluid align-self-start   mt-2 mb-2">
-                                        <div class="row">
-                                            <div class="col-7 col-md-5">
-                                            </div>
-                                            <div class="col-md-7 col-5 text-right">
-                                                <div class="row align-items-center">
-                                                    <div class="col-12 align-self-center">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="position-relative  w-100 h-50  d-flex">
+                            <a class="card-img-overlay p-0 no-href-style" href="{{ path( "ez_urlalias", {"locationId": kitchens.0.versionInfo.contentInfo.mainLocationId} ) }}">
+                                <div class="position-relative  w-100 h-100 brightness-filter d-flex">
                                     <div class="container-fluid align-self-center   mt-5 mb-2">
                                         <div class="row h-100 align-items-center">
                                             <div class="col-12">
-                                                <h2 class="text-center bg-text-color pt-md-2 pt-sm-4 text-white">
+                                                <h2 class="text-center pt-md-2 pt-sm-4 text-white">
                                                     {{ ez_field_value(kitchens.0, 'title') }}
                                                 </h2>
                                             </div>
@@ -81,36 +68,19 @@
                             <div class="row align-content-center">
                                 {% for kitchen in kitchens %}
                                     {% if loop.index != 1 %}
-                                        <a class="card p-2 col-md-6  no-gutters text-light  border-light darkness-hover "
+                                        <a class="card p-2 col-md-6  no-gutters text-light  border-light "
                                             href="{{ path( "ez_urlalias", {"locationId": kitchen.versionInfo.contentInfo.mainLocationId} ) }}">
                                             {% if not ez_is_field_empty(kitchen, 'image_tile') %}
-                                                <img class="card-img h-100 shadow darkness-hover" src="{{ ez_field_value(kitchen, 'image_tile').uri }}">
+                                                <img class="card-img h-100 shadow darkness-hover" style="height: 340px !important;" src="{{ ez_field_value(kitchen, 'image_tile').uri }}">
                                             {% endif %}
 
                                             <div class="card-img-overlay p-1 d-flex  flex-column  align-items-baseline justify-content-center ">
-                                                <div class="container-fluid h-25">
-                                                    <div class="row h-100 align-items-center">
-                                                        <div class="col-6">
-                                                        </div>
-                                                        <div class="col-6 text-end">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="container-fluid  h-50  text-center">
+                                                <div class="container-fluid  h-100 brightness-filter  text-center">
                                                     <div class="row h-100 align-items-center">
                                                         <div class="col-12">
-                                                            <h2 class="text-white bg-text-color mt-3 mb-3">
+                                                            <h2 class="text-white mt-3 mb-3">
                                                                 {{ ez_field_value(kitchen, 'title') }}
                                                             </h2>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="container-fluid h-25  ">
-                                                    <div class="row h-100 align-items-center">
-                                                        <div class="col-6">
-                                                            <i class="fa fa-cloud fa-lg" aria-hidden="true"></i>
-                                                        </div>
-                                                        <div class="col-6 text-end">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -160,8 +130,10 @@
                             {% if not ez_is_field_empty(content, 'description_cta') %}
                                 {{ ez_render_field(content, 'description_cta') }}
                             {% endif %}
-                            <a href="#"
-                               class="btn btn-lg btn-round btn-lg btn-danger btn-rised ml-md-4 mt-md-4">Contacez nous</a>
+                            <a href="{{ link.link(content) }}"
+                               class="btn btn-lg btn-round btn-lg btn-danger btn-rised ml-md-4 mt-md-4">{% if not ez_is_field_empty(content, 'title_cta') %}
+                                    {{ ez_field_value(content, 'title_cta') }}
+                                {% endif %}</a>
                         </div>
                     </div>
                 </div>
@@ -171,7 +143,7 @@
 {#    carouselle#}
     <section class="pt-5 pb-5">
         <div class="container">
-            <div class="col-6">
+            <div class="col-12">
                 {% if not ez_is_field_empty(content, 'title_family_kitchen') %}
                     <h3 class="mb-3">{{ ez_field_value(content, 'title_family_kitchen') }}</h3>
                 {% endif %}
