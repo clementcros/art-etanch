@@ -141,41 +141,87 @@
         </div>
     </section>
 {#    carouselle#}
-    <section class="pt-5 pb-5">
-        <div class="container">
-            <div class="col-12">
-                {% if not ez_is_field_empty(content, 'title_family_kitchen') %}
-                    <h3 class="mb-3">{{ ez_field_value(content, 'title_family_kitchen') }}</h3>
-                {% endif %}
-                {% if not ez_is_field_empty(content, 'description_kitchen_family') %}
-                    {{ ez_render_field(content, 'description_kitchen_family') }}
-                {% endif %}
-            </div>
-            <div class="row">
-                {% for kitchenStyle in kitchensFamily %}
-                    <div class="col-lg-4 col-sm-6 mb-4">
-                        <div class="card h-100">
-                            <a href="{{ path( "ez_urlalias", {"locationId": kitchenStyle.versionInfo.contentInfo.mainLocationId} ) }}">
-                                {% if not ez_is_field_empty(kitchenStyle, 'image_tile') %}
-                                    <img class="card-img-top" alt="100%x280" style="height: 290px" src="{{ ez_field_value(kitchenStyle, 'image_tile').uri }}"
-                                         alt="">
-                                {% endif %}
-
-                            </a>
-                            <div class="card-body">
-                                <h4 class="card-title">
-                                    <a class="no-href-style" href="{{ path( "ez_urlalias", {"locationId": kitchenStyle.versionInfo.contentInfo.mainLocationId} ) }}">{{ ez_field_value(kitchenStyle, 'family_kitchen_title') }}</a>
-                                </h4>
-                                <p class="card-text">
-                                    {% if not ez_is_field_empty(kitchenStyle, 'short_description') %}
-                                        {{ ez_render_field(kitchenStyle, 'short_description') }}
+    {% if kitchensFamily is not empty %}
+        <section class="pt-5 pb-5">
+            <div class="container">
+                <div class="col-12">
+                    {% if not ez_is_field_empty(content, 'title_family_kitchen') %}
+                        <h3 class="mb-3">{{ ez_field_value(content, 'title_family_kitchen') }}</h3>
+                    {% endif %}
+                    {% if not ez_is_field_empty(content, 'description_kitchen_family') %}
+                        {{ ez_render_field(content, 'description_kitchen_family') }}
+                    {% endif %}
+                </div>
+                <div class="row">
+                    {% for kitchenStyle in kitchensFamily %}
+                        <div class="col-lg-4 col-sm-6 mb-4">
+                            <div class="card h-100">
+                                <a href="{{ path( "ez_urlalias", {"locationId": kitchenStyle.versionInfo.contentInfo.mainLocationId} ) }}">
+                                    {% if not ez_is_field_empty(kitchenStyle, 'image_tile') %}
+                                        <img class="card-img-top" alt="100%x280" style="height: 290px"
+                                             src="{{ ez_field_value(kitchenStyle, 'image_tile').uri }}"
+                                             alt="">
                                     {% endif %}
-                                </p>
+
+                                </a>
+                                <div class="card-body">
+                                    <h4 class="card-title">
+                                        <a class="no-href-style"
+                                           href="{{ path( "ez_urlalias", {"locationId": kitchenStyle.versionInfo.contentInfo.mainLocationId} ) }}">{{ ez_field_value(kitchenStyle, 'family_kitchen_title') }}</a>
+                                    </h4>
+                                    <p class="card-text">
+                                        {% if not ez_is_field_empty(kitchenStyle, 'short_description') %}
+                                            {{ ez_render_field(kitchenStyle, 'short_description') }}
+                                        {% endif %}
+                                    </p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                {% endfor %}
+                    {% endfor %}
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+    {% endif %}
+{#    réalistions#}
+    {% if creations is not empty %}
+        <section class="pt-5 pb-5">
+            <div class="container">
+                <div class="col-12">
+                    {% if not ez_is_field_empty(content, 'title_creation') %}
+                        <h3 class="mb-3">{{ ez_field_value(content, 'title_creation') }}</h3>
+                    {% endif %}
+                    {% if not ez_is_field_empty(content, 'description_creation') %}
+                        {{ ez_render_field(content, 'description_creation') }}
+                    {% endif %}
+                </div>
+                <div class="row">
+                    {% for creation in creations %}
+                        <div class="col-lg-4 col-sm-6 mb-4">
+                            <div class="card h-100">
+                                <a href="{{ path( "ez_urlalias", {"locationId": creation.versionInfo.contentInfo.mainLocationId} ) }}">
+                                    {% if not ez_is_field_empty(creation, 'image_tile') %}
+                                        <img class="card-img-top" alt="100%x280" style="height: 290px"
+                                             src="{{ ez_field_value(creation, 'image_tile').uri }}"
+                                             alt="">
+                                    {% endif %}
+
+                                </a>
+                                <div class="card-body">
+                                    <h4 class="card-title">
+                                        <a class="no-href-style"
+                                           href="{{ path( "ez_urlalias", {"locationId": creation.versionInfo.contentInfo.mainLocationId} ) }}">{{ ez_field_value(creation, 'title') }}</a>
+                                    </h4>
+                                    <p class="card-text">
+                                        {% if not ez_is_field_empty(creation, 'description_short') %}
+                                            {{ ez_render_field(creation, 'description_short') }}
+                                        {% endif %}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+    {% endif %}
 {% endblock %}

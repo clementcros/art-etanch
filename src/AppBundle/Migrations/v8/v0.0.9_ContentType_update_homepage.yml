@@ -1,0 +1,60 @@
+-
+    type: location
+    mode: load
+    match:
+        content_type_identifier: list_creation
+    references:
+        -   identifier: list_creation_location_id
+            attribute: location_id
+-
+    type: content_type
+    mode: update
+    match:
+        identifier: homepage
+    attributes:
+        -
+            type: ezstring
+            name:
+                eng-GB: "Titre Block nos réalisations"
+            identifier: title_creation
+            description:
+                eng-GB: "Titre du block"
+            required: false
+            searchable: false
+            info-collector: false
+            disable-translation: false
+            category: default
+            position: 140
+
+        -
+            type: ezrichtext
+            name:
+                eng-GB: "Descritpion nos créations mises en avant"
+            identifier: description_creation
+            description:
+                eng-GB: "Descritpion nos créations mises en avant"
+            required: false
+            searchable: false
+            info-collector: false
+            disable-translation: false
+            category: default
+            position: 150
+        -
+            type: ezobjectrelationlist
+            name:
+                eng-GB: "Nos créations mises en avant"
+            identifier: creation_relation
+            description:
+                eng-GB: "Créations mise en avant sur la page d'accueil"
+            required: false
+            searchable: false
+            info-collector: false
+            disable-translation: false
+            category: default
+            validator-configuration:
+                RelationListValueValidator:
+                    selectionLimit: 9
+            field-settings:
+                selectionDefaultLocation: "reference:list_creation_location_id"
+                selectionContentTypes: [ "creation" ]
+            position: 160

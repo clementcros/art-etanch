@@ -7,14 +7,14 @@
                      background-image: url('{{ ez_field_value(content, 'image').uri }}');
              {% endif %}
                      ">
-        <div class="container " style="">
+        <div class="container">
             <div class="row mt-auto">
                 <div class="col-lg-8 col-sm-12 text-center mx-auto text-white">
                     {% if not ez_is_field_empty(content, 'family_kitchen_title') %}
                         <h1 class="display-4 mb-3">{{ ez_field_value(content, 'family_kitchen_title') }}</h1>
                     {% endif %}
                     {% if not ez_is_field_empty(content, 'short_description') %}
-                        <p class="lead mb-5">    {{ ez_render_field(content, 'short_description') }}</p>
+                        <div class="text-hero-contrast">  {{ ez_render_field(content, 'short_description') }}</div>
                     {% endif %}
                 </div>
             </div>

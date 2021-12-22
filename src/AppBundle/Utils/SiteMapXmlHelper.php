@@ -63,7 +63,11 @@ class SiteMapXmlHelper
             $urlBlock->appendChild($loc);
 
             $url = $container->get('router')->generate($location);
+            $splitUrl = explode('/admin', $url);
 
+            if (count($splitUrl) > 1) {
+                $url = $splitUrl[1];
+            }
             if (in_array($url, $this->excludeUrls)) {
                 continue;
             }

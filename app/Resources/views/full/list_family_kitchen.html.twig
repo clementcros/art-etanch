@@ -11,7 +11,7 @@
                     <h1 class="display-4 text-center  mb-3 mt-5">{{ ez_field_value(content, 'title_page') }}</h1>
                     <p class="lead  text-center">
                         {% if not ez_is_field_empty(content, 'description') %}
-                            {{ ez_render_field(content, 'description') }}
+                            <div class="text-hero-contrast">{{ ez_render_field(content, 'description') }}</div>
                         {% endif %}
                     </p>
                 </div>

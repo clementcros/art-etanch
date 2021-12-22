@@ -6,7 +6,7 @@ use eZ\Bundle\EzPublishCoreBundle\Controller;
 use eZ\Publish\Core\MVC\Symfony\View\ContentView;
 use Symfony\Component\HttpFoundation\Request;
 
-class ListKitchenController extends Controller
+class ListCreationController extends Controller
 {
     /**
      * @var SearchHelper
@@ -30,15 +30,15 @@ class ListKitchenController extends Controller
     public function fullAction(ContentView $view) : ContentView
     {
 
-        $kitchens = $this->searchHelper->locationsList(
+        $creations = $this->searchHelper->locationsList(
             $view->getLocation()->id,
-            ['kitchen'],
+            ['creation'],
             []
         );
-        $kitchens = $this->getMenuLocationList($kitchens);
+        $creations = $this->getMenuLocationList($creations);
 
         $view->addParameters([
-            'kitchens' => $kitchens,
+            'creations' => $creations,
         ]);
 
 

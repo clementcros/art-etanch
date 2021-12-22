@@ -92,3 +92,4 @@ A faire pour le déploiement :
 - 3- paramètrer les mails
 - 4- lancer les migrations
 - 5- crée les premiers éléments et contribuer la page d'accueil
+- 6 appliquer les chmod dans le ezplatform/var et ezplatform/web/var

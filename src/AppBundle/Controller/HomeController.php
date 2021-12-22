@@ -44,9 +44,17 @@ class HomeController extends Controller
             false
         );
 
+        $creations = $this->searchHelper->getTargetOfRelations(
+            $view->getContent(),
+            'creation_relation',
+            true,
+            false
+        );
+
         $view->addParameters([
             'kitchens' => $kitchens,
-            'kitchensFamily' => $kitchensFamily
+            'kitchensFamily' => $kitchensFamily,
+            'creations' => $creations,
         ]);
 
         return $view;

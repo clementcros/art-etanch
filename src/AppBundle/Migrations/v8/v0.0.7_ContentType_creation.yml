@@ -1,0 +1,75 @@
+-
+    type: content_type
+    mode: create
+    content_type_group: Content
+    identifier: creation
+    name:
+        eng-GB: "Réalisation"
+    name_pattern: <title>
+    is_container: true
+    attributes:
+        -
+            type: ezstring
+            name:
+                eng-GB: "Titre"
+            identifier: title
+            description:
+                eng-GB: "Titre de votre réalisation"
+            required: true
+            searchable: true
+            info-collector: false
+            disable-translation: false
+            category: default
+            position: 10
+        -
+            type: ezimage
+            name:
+                eng-GB: "Image de la tuile"
+            identifier: image_tile
+            description:
+                eng-GB: "Image utilisée pour illustrer les tuiles mises en avant"
+            required: true
+            searchable: false
+            info-collector: false
+            disable-translation: false
+            category: media
+            position: 20
+        -
+            type: ezimage
+            name:
+                eng-GB: "Image de la page"
+            identifier: image
+            description:
+                eng-GB: "Image utilisée pour illustrer la page"
+            required: true
+            searchable: false
+            info-collector: false
+            disable-translation: false
+            category: media
+            position: 30
+        -
+            type: ezrichtext
+            name:
+                eng-GB: "Descritpion courte"
+            identifier: description_short
+            description:
+                eng-GB: "Courte description pour les tuiles (150 caractères max)"
+            required: true
+            searchable: true
+            info-collector: false
+            disable-translation: false
+            category: default
+            position: 40
+        -
+            type: ezrichtext
+            name:
+                eng-GB: "Contenu"
+            identifier: content
+            description:
+                eng-GB: "Contenu présent sur la page"
+            required: true
+            searchable: false
+            info-collector: false
+            disable-translation: false
+            category: default
+            position: 50

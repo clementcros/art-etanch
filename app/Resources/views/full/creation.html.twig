@@ -1,0 +1,52 @@
+{% extends 'pagelayout.html.twig' %}
+
+{% block content %}
+    <section class="pt-5 pb-5">
+        <div class="container">
+            <div class="row">
+                <div class="col text-center">
+                    <h1>{{ ez_field_value(content, 'title') }}</h1>
+                    {% if not ez_is_field_empty(content, 'image') %}
+                        <img alt="image" class="img-fluid mt-5"
+                             src="{{ ez_field_value(content, 'image').uri }}">
+                    {% endif %}
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="bg-white text-dark pt-0 pb-3 mb-0">
+        <div class="container">
+            <div class="row mt-0 mb-2 pt-5 d-flex justify-content-center">
+                <div class="col-md-10 col-sm-12 ">
+                    {{ ez_render_field(content, 'content') }}
+                </div>
+            </div>
+        </div>
+    </section>
+    {% if images is not empty %}
+        <section class="pt-3 pb-3">
+            <div class="container">
+                <div class="row row-grid">
+                    {% for image in images %}
+                        <div class="col-xs-6 col-md-3 my-1 text-center">
+                            <figure class="figure">
+                                <img src="{{ ez_field_value(image, 'image').uri }}"
+                                     class="figure-img img-fluid rounded kitchen-images"
+                                        {% if not ez_is_field_empty(image, 'name') %}
+                                            alt="{{ ez_field_value(image, 'name') }}"
+                                        {% endif %}
+                                >
+                                {% if not ez_is_field_empty(image, 'caption') %}
+                                    <figcaption class="figure-caption">
+                                        {{ ez_render_field(image, 'caption') }}
+                                    </figcaption>
+                                {% endif %}
+                            </figure>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+    {% endif %}
+{% endblock %}

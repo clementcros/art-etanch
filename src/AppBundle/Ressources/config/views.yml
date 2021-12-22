@@ -33,3 +33,13 @@ ezpublish:
                         template: full/contact.html.twig
                         match:
                             Identifier\ContentType: contact
+                    list_creation:
+                        controller: AppBundle:ListCreation:full
+                        template: full/list_creation.html.twig
+                        match:
+                            Identifier\ContentType: list_creation
+                    creation:
+                        controller: AppBundle:Creation:full
+                        template: full/creation.html.twig
+                        match:
+                            Identifier\ContentType: creation

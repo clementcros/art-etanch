@@ -1,0 +1,13 @@
+-
+    type: content
+    mode: create
+    content_type: list_creation
+    parent_location: 2
+    attributes:
+        title: Liste des créations
+        image:
+            path: 'img-creation.jpg'
+            alt_text: 'art-etanch'
+    lang: eng-GB
+    sort_field: priority
+    sort_order: ASC

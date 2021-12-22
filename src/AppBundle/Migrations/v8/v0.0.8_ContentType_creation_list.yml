@@ -1,0 +1,62 @@
+-
+    type: content_type
+    mode: create
+    content_type_group: Content
+    identifier: list_creation
+    name:
+        eng-GB: "Liste des réalisations"
+    name_pattern: <title>
+    is_container: true
+    attributes:
+        -
+            type: ezstring
+            name:
+                eng-GB: "Titre"
+            identifier: title
+            description:
+                eng-GB: "Titre de la liste des réalisations"
+            required: true
+            searchable: true
+            info-collector: false
+            disable-translation: false
+            category: default
+            position: 10
+        -
+            type: ezimage
+            name:
+                eng-GB: "Image de la page"
+            identifier: image
+            description:
+                eng-GB: "Image utilisée pour illustrer la page"
+            required: true
+            searchable: false
+            info-collector: false
+            disable-translation: false
+            category: default
+            position: 20
+        -
+            type: ezrichtext
+            name:
+                eng-GB: "Descritpion sous-titre"
+            identifier: description_subtitle
+            description:
+                eng-GB: "Sous titre de la page"
+            required: false
+            searchable: false
+            info-collector: false
+            disable-translation: false
+            category: default
+            position: 30
+        -
+            type: ezrichtext
+            name:
+                eng-GB: "Descritpion"
+            identifier: description
+            description:
+                eng-GB: "Descritpion présent sur la page"
+            required: false
+            searchable: false
+            info-collector: false
+            disable-translation: false
+            category: default
+            position: 40
