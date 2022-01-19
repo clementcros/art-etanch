@@ -38,17 +38,17 @@ class EmailHelper
     public function sendEmail(array $contactForm, $origin) : bool
     {
         $this->sendEmailCustomer($contactForm, $origin);
-        $message = (new \Swift_Message('Contact art-etanch'))
-            ->setFrom('send@example.com')
-            ->setTo('recipient@example.com')
-            ->setBody(
-                $this->template->render(
-                    'emails/contact.html.twig',
-                    ['contactForm' => $contactForm]
-                ),
-                'text/html'
-            );
-        $this->mailer->send($message);
+
+        $headers = "From: contact@art-etanch.com\r\n";
+        $headers .= "Reply-To: fred.art.etanch@gmail.com\r\n";
+        $headers .= "MIME-Version: 1.0\r\n";
+        $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
+
+        mail("fred.art.etanch@gmail.com", 'art-etanch.com nouvelle demande de contact', $this->template->render(
+            'emails/contact.html.twig',
+            ['contactForm' => $contactForm]
+        ), $headers);
+
         return true;
     }
 
@@ -97,6 +97,21 @@ class EmailHelper
                 'text/html'
             );
         $this->mailer->send($message);
+
+        $headers = "From: contact@art-etanch.com\r\n";
+        $headers .= "Reply-To: ". $contactForm['email'] . "\r\n";
+        $headers .= "MIME-Version: 1.0\r\n";
+        $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
+        mail($contactForm['email'], 'Contact art-etanch [ NE PAS REPONDRE ]', $this->template->render(
+            'emails/contact_customer.html.twig',
+            [
+                'contactForm' => $contactForm,
+                'logoHeader' => $logoHeader,
+                'logo' => $logo,
+                'kitchen' => $kitchenFamilyContent->getVersionInfo()->getContentInfo()->mainLocationId,
+                'origin' => $origin
+            ]
+        ), $headers);
 
         return true;
     }
