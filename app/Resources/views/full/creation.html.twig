@@ -33,7 +33,11 @@
                             <figure class="figure">
                                 <img src="{{ ez_field_value(image, 'image').uri }}"
                                      class="figure-img img-fluid rounded kitchen-images"
+                                     data-image="{{ ez_field_value(image, 'image').uri }}"
+                                     data-toggle="modal"
+                                     data-target="#myModal"
                                         {% if not ez_is_field_empty(image, 'name') %}
+                                            data-overview="{{ ez_field_value(image, 'name') }}"
                                             alt="{{ ez_field_value(image, 'name') }}"
                                         {% endif %}
                                 >
@@ -49,4 +53,24 @@
             </div>
         </section>
     {% endif %}
+
+    <div class="modal fade bd-example-modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">
+                        <div id="title"></div>
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p style="text-align: center"><img style="width: -webkit-fill-available;" src="" id="image"/></p>
+                    <p>
+                    <div id="overview"></div>
+                    </p>
+                </div>
+            </div>
+        </div>
 {% endblock %}
