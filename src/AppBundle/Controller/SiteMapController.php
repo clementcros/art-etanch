@@ -63,10 +63,6 @@ class SiteMapController extends Controller
         $response->headers->set('Content-Type', 'application/xml');
         $response->sendHeaders();
         $siteMap = getcwd().'/sitemap.xml';
-        if (!file_exists($siteMap)) {
-           $this->siteMapXmlHelper->generateSitemap();
-            $siteMap = getcwd().'/sitemap.xml';
-        }
 
         return $response->setContent(file_get_contents($siteMap));
     }

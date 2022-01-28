@@ -18,11 +18,38 @@
     <link rel="stylesheet"
           href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
 {#    <link rel="icon" href="{{ asset('bundles/camed/images/icons/favicon.ico') }}">#}
-    {% stylesheets 'assets/css/*' filter='cssrewrite' %}
+    {% stylesheets 'assets/css/*' 'assets/tarteaucitron/css/tarteaucitron.css' filter='cssrewrite' %}
         <link rel="stylesheet" href="{{ asset_url }}" />
     {% endstylesheets %}
-{#    {% include 'common/stylesheets.html.twig' %}#}
-{#    {% block stylesheets %}{% endblock %}#}
+    {% javascripts 'assets/tarteaucitron/*' %}
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+    <script>
+        tarteaucitron.init({
+            "privacyUrl": "", /* URL de la page de la politique de vie privée */
+
+            "hashtag": "#tarteaucitron", /* Ouvrir le panneau contenant ce hashtag */
+            "cookieName": "tarteaucitron", /* Nom du Cookie */
+
+            "orientation": "middle", /* Position de la bannière (top - bottom) */
+            "showAlertSmall": true, /* Voir la bannière réduite en bas à droite */
+            "cookieslist": true, /* Voir la liste des cookies */
+
+            "adblocker": false, /* Voir une alerte si un bloqueur de publicités est détecté */
+            "AcceptAllCta": true, /* Voir le bouton accepter tout (quand highPrivacy est à true) */
+            "highPrivacy": true, /* Désactiver le consentement automatique */
+            "handleBrowserDNTRequest": false, /* Si la protection du suivi du navigateur est activée, tout interdire */
+
+            "removeCredit": false, /* Retirer le lien vers tarteaucitron.js */
+            "moreInfoLink": true, /* Afficher le lien "voir plus d'infos" */
+            "useExternalCss": false, /* Si false, tarteaucitron.css sera chargé */
+
+            //"cookieDomain": ".my-multisite-domaine.fr", /* Cookie multisite */
+
+            "readmoreLink": "/cookiespolicy" /* Lien vers la page "Lire plus" */
+        });
+    </script>
+    <title>Cuisiniste Art-etanch</title>
 </head>
 
 <body>
@@ -36,8 +63,20 @@
     {{ render_esi(controller('AppBundle:Layout:footer', { 'currentLocationId': currentLocationId })) }}
 
 {% javascripts 'assets/js/jquery.min.js'
-    'assets/js/*' %}
+    'assets/js/*
+' %}
     <script src="{{ asset_url }}"></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-218210584-1">
+    </script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-218210584-1');
+    </script>
 {% endjavascripts %}
 </body>
 </html>

@@ -23,6 +23,19 @@
                 </div>
             </div>
         {% endif %}
+        {% if sended == false %}
+            <div class="container-fluid">
+                <div class="row d-flex">
+                    <div class="col-md-12">
+                        <div class="card bg-danger text-light text-center border-0">
+                            <div class="card-body pt-3 pb-1">
+                                <p class="lead pb-0 mb-1">Votre message n'a pas été envoyé
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
         <grammarly-extension data-grammarly-shadow-root="true"
                              style="position: absolute; top: 0px; left: 0px; pointer-events: none;"
                              class="cGcvT"></grammarly-extension>
@@ -94,6 +107,7 @@
                             </div>
                         </div>
                         <div class="row mt-4">
+                            <div class="g-recaptcha" data-sitekey="6Le5YDUeAAAAAHglcuxxgDSDsKDfp35hk7XdhBrG"></div>
                             <div class="col">
                                 <button type="submit" class="btn btn-primary">Envoyer</button>
                             </div>
