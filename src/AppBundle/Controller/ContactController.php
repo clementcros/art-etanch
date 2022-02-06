@@ -32,14 +32,28 @@ class ContactController extends Controller
     public function fullAction(ContentView $view, Request $request): ContentView
     {
         $sended = null;
-        if ($request->getMethod() == Request::METHOD_POST) {
+        $firstOperator = rand(1, 10);
+        $secondOperator = rand(1, 10);
+        if ($request->getMethod() == Request::METHOD_POST &&
+            $this->checkOperator($request->get('firstOperator'), $request->get('secondOperator'), $request->get('calcul'))
+        ) {
             $sended = $this->emailHelper->sendEmail($request->request->all(), $request->server->get('HTTP_ORIGIN'));
         }
 
         $view->addParameters([
-            'sended' => $sended
+            'sended' => $sended,
+            'firstOperator' => $firstOperator,
+            'secondOperator' => $secondOperator
         ]);
 
         return $view;
+    }
+
+    private function checkOperator($first, $second, $result): bool
+    {
+        if ($first + $second == $result) {
+            return true;
+        }
+        return false;
     }
 }

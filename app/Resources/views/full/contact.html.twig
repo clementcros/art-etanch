@@ -7,7 +7,8 @@
                              class="cGcvT"></grammarly-extension>
         <div class="container-fluid p-0 pb-3">
             <div style="width: 100%"><iframe width="100%" height="300" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=100%25&amp;height=300&amp;hl=en&amp;q=6%20Rue%20de%20Copenhague,%2034350%20Vendres+(Art-etanch)&amp;t=&amp;z=15&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"><a href="https://www.gps.ie/sport-gps/">gps watches</a></iframe>
-        </div>
+            </div>
+        </div>>
     </section>
     <section class="pb-5 pt-5">
         {% if sended == true %}
@@ -64,11 +65,11 @@
                         <div class="row">
                             <div class="col">
                                 <input type="text" class="form-control" name="name"
-                                       placeholder="Nom">
+                                       placeholder="Nom" required >
                             </div>
                             <div class="col">
                                 <input type="text" class="form-control" name="lastname"
-                                       placeholder="Prénom">
+                                       placeholder="Prénom" required >
                             </div>
                         </div>
                         <div class="row mt-4">
@@ -107,7 +108,16 @@
                             </div>
                         </div>
                         <div class="row mt-4">
-                            <div class="g-recaptcha" data-sitekey="6Le5YDUeAAAAAHglcuxxgDSDsKDfp35hk7XdhBrG"></div>
+                            <div class="col">
+                                <label>Afin de nous assurer que vous n'êtes pas un robot merci de répondre à la question suivante:</label>
+                                <input type="text" required class="form-control" name="calcul"
+                                       placeholder="Combien font {{ firstOperator }} + {{ secondOperator }}">
+                            </div>
+                            <input type="hidden" value="{{ firstOperator }}" name="firstOperator">
+                            <input type="hidden" value="{{ secondOperator }}" name="secondOperator">
+                        </div>
+                        <div class="row mt-4">
+                            <div class="g-recaptcha" style="display: none;" data-sitekey="6Le5YDUeAAAAAHglcuxxgDSDsKDfp35hk7XdhBrG"></div>
                             <div class="col">
                                 <button type="submit" class="btn btn-primary">Envoyer</button>
                             </div>
