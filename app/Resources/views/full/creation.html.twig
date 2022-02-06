@@ -31,7 +31,7 @@
                     {% for image in images %}
                         <div class="col-xs-6 col-md-3 my-1 text-center">
                             <figure class="figure">
-                                <img src="{{ ez_field_value(image, 'image').uri }}"
+				<img src="{{ ez_field_value(image, 'image').uri }}"
                                      class="figure-img img-fluid rounded kitchen-images"
                                      data-image="{{ ez_field_value(image, 'image').uri }}"
                                      data-toggle="modal"
@@ -53,8 +53,7 @@
             </div>
         </section>
     {% endif %}
-
-    <div class="modal fade bd-example-modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+	    <div class="modal fade bd-example-modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">

@@ -1,6 +1,7 @@
 <meta name="robots" content="index, follow">
 {% if title is not null %}
     <meta name="title" content="{{ ez_field_value(content, title) }}">
+    <title>{{ ez_field_value(content, title) }}</title>
 {% endif %}
 {% if description is not null %}
     <meta name="description" content="{{ ez_render_field(content, description)|striptags|slice(0, 150) ~ '...' }}">

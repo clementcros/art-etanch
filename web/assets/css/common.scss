@@ -31,8 +31,9 @@
 }
 
 .kitchen-images {
-     //height: 300px;
+    //height: 300px;
     //width: 300px;
+    cursor: pointer;
 }
 .kitchen-images-relations {
     height: 300px;
@@ -67,6 +68,9 @@ body {
     font-weight: bold;
     font-size: 17px;
     text-shadow: 2px 2px 2px #000;
+}
+.align-center {
+text-align: center;
 }
 
 .ezrichtext-field > .align-center {
