@@ -31,8 +31,8 @@
 }
 
 .kitchen-images {
-    height: 300px;
-    width: 300px;
+     //height: 300px;
+    //width: 300px;
 }
 .kitchen-images-relations {
     height: 300px;
@@ -67,4 +67,46 @@ body {
     font-weight: bold;
     font-size: 17px;
     text-shadow: 2px 2px 2px #000;
+}
+
+.ezrichtext-field > .align-center {
+    text-align: center;
+}
+.ezrichtext-field > .align-left {
+    text-align: left;
+}
+.ezrichtext-field > .align-right {
+    text-align: right;
+}
+
+#loading {
+    color: black;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: white;
+    z-index: 99;
+}
+
+#loading-image {
+    z-index: 100;
+    width: 45%;
+    animation: wave-text 1s ease-in-out infinite;
+}
+
+@keyframes wave-text {
+    00% {
+        transform: translateY(0em);
+    }
+    60% {
+        transform: translateY(-0.6em);
+    }
+    100% {
+        transform: translateY(0em);
+    }
 }

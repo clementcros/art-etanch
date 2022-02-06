@@ -52,7 +52,10 @@
     <title>Cuisiniste Art-etanch</title>
 </head>
 
-<body>
+<body onload="loaded();">
+{% block loader %}
+{% endblock %}
+
     {{ render_esi(controller('AppBundle:Layout:header', { 'currentLocationId': currentLocationId })) }}
 
 <div class="page-container">

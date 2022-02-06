@@ -1,5 +1,23 @@
 {% import 'macros/external_or_internal_link.html.twig' as link %}
 {% extends 'pagelayout.html.twig' %}
+{% block loader %}
+    <script>
+        const myTimeout = setTimeout(myStopFunction, 1000);
+
+        function myStopFunction() {
+            $( "#loading" ).fadeOut(1000, function() {
+                $( "#loading" ).remove();
+            });
+        }
+        function loaded() {
+            this.myTimeout;
+        }
+    </script>
+    <div id="loading">
+        <img id="loading-image" src="{{ asset('assets/images/logo.webp') }}" alt="Chargement en cour ..."/>
+        <h1>Nous chargeons votre futur projet!</h1>
+    </div>
+{% endblock %}
 
 {% block content %}
 
